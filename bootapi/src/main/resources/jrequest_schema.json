@@ -1,0 +1,89 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "title": "The root schema",
+    "description": "The root schema comprises the entire JSON document.",
+    "default": {},
+    "examples": [
+        {
+            "id": "652",
+            "findDuplicates": "HereWeHaveSomeDuplicatedCharacters",
+            "whiteSpacesGalore": "Can we replace all this white spaces without using replace please",
+            "validateMeOnlyIActuallyShouldBeABoolean": false,
+            "numbersMeetNumbers": [
+                35,
+                2,
+                100,
+                15,
+                75,
+                25,
+                99
+            ]
+        }
+    ],
+    "required": [
+        "id",
+        "findDuplicates",
+        "whiteSpacesGalore",
+        "validateMeOnlyIActuallyShouldBeABoolean",
+        "numbersMeetNumbers"
+    ],
+    "properties": {
+        "id": {
+            "$id": "#/properties/id",
+            "default": "",
+            "description": "An explanation about the purpose of this instance.",
+            "examples": [
+                "652"
+            ],
+            "title": "The id schema",
+            "type": "string"
+        },
+        "findDuplicates": {
+            "$id": "#/properties/findDuplicates",
+            "type": "string",
+            "title": "The findDuplicates schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "HereWeHaveSomeDuplicatedCharacters"
+            ]
+        },
+        "whiteSpacesGalore": {
+            "$id": "#/properties/whiteSpacesGalore",
+            "type": "string",
+            "title": "The whiteSpacesGalore schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+                "Can we replace all this white spaces without using replace please"
+            ]
+        },
+        "validateMeOnlyIActuallyShouldBeABoolean": {
+            "$id": "#/properties/validateMeOnlyIActuallyShouldBeABoolean",
+            "type": "boolean",
+            "title": "The validateMeOnlyIActuallyShouldBeABoolean schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": false,
+            "examples": [
+                false
+            ]
+        },
+        "numbersMeetNumbers": {
+            "$id": "#/properties/numbersMeetNumbers",
+            "type": "array",
+            "title": "The numbersMeetNumbers schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": [],
+            "examples": [
+                [
+                    35,
+                    2
+                ]
+            ],
+            "additionalItems": true
+        }
+    },
+    "additionalProperties": true
+}
