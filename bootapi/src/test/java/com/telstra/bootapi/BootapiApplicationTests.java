@@ -10,7 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 class BootapiApplicationTests {
 
 	@Test
-	void contextLoads() {
+	public void contextLoads() {
 	}
 
 }

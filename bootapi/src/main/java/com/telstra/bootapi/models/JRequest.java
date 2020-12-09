@@ -2,6 +2,8 @@ package com.telstra.bootapi.models;
 
 import java.util.Arrays;
 
+import javax.validation.constraints.Pattern;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -9,18 +11,25 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class JRequest {
 	@Id
 	private int _id;
-	private int id;
+	
+	
+	@Pattern(regexp = "[+-]?[0-9]+")	
+	private Integer id;
 	private String findDuplicates;
 	private String whiteSpacesGalore;
-	private String validateMeOnlyIActuallyShouldBeABoolean;
+	
+
+    @Pattern(regexp = "^true$|^false$", message = "allowed input: true or false")	
+	private Boolean validateMeOnlyIActuallyShouldBeABoolean;
+	
 	private int[] numbersMeetNumbers;
 	
 	
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public int get_id() {
@@ -41,10 +50,10 @@ public class JRequest {
 	public void setWhiteSpacesGalore(String whiteSpacesGalore) {
 		this.whiteSpacesGalore = whiteSpacesGalore;
 	}
-	public String getValidateMeOnlyIActuallyShouldBeABoolean() {
+	public Boolean getValidateMeOnlyIActuallyShouldBeABoolean() {
 		return validateMeOnlyIActuallyShouldBeABoolean;
 	}
-	public void setValidateMeOnlyIActuallyShouldBeABoolean(String validateMeOnlyIActuallyShouldBeABoolean) {
+	public void setValidateMeOnlyIActuallyShouldBeABoolean(Boolean validateMeOnlyIActuallyShouldBeABoolean) {
 		this.validateMeOnlyIActuallyShouldBeABoolean = validateMeOnlyIActuallyShouldBeABoolean;
 	}
 	public int[] getNumbersMeetNumbers() {
