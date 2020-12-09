@@ -9,35 +9,39 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.telstra.bootapi.models.JRequest;
 
-public class UtilsTest extends AbstractTest{
+public class UtilsTest extends AbstractTest {
 	@Autowired
 	Utils testUtils;
-	
+
 	@Override
 	@Before
 	public void setUp() {
 		super.setUp();
 	}
-	
+
 	@Test
-	public void testComputeLargestUtils() throws Exception{
+	public void testComputeLargestUtils() throws Exception {
 		System.out.println("Running Utils tests-computeLargest...");
-		JRequest jRequest = new JRequest();
-		jRequest.set_id(testUtils.assignJReqID());
-		jRequest.setFindDuplicates("HereWeHaveSomeDuplicatedCharacters");
-		jRequest.setId(10090);
-		jRequest.setValidateMeOnlyIActuallyShouldBeABoolean(false);
-		jRequest.setWhiteSpacesGalore("Can we replace all this white spaces without using replace please");
-		jRequest.setNumbersMeetNumbers(new int[] { 35, 2, 100, 15, 75, 25, 99 });
-		
-		assertTrue(testUtils.computeLargest(jRequest)==100);
-		assertFalse("Incorrect Value", testUtils.computeLargest(jRequest)==99);
-		
+		JRequest jRequest = getJRequest();
+
+		assertTrue(testUtils.computeLargest(jRequest) == 100);
+		assertFalse("Incorrect Value", testUtils.computeLargest(jRequest) == 99);
+
 	}
-	
+
 	@Test
-	public void testRemoveWhtSpaceUtils() throws Exception{
+	public void testRemoveWhtSpaceUtils() throws Exception {
 		System.out.println("Running Utils tests-removeWhtSpace...");
+		JRequest jRequest = getJRequest();
+
+		assertTrue(
+				testUtils.removeWhtSpace(jRequest).contains("Canwereplaceallthiswhitespaceswithoutusingreplaceplease"));
+		assertFalse("Incorrect String", testUtils.removeWhtSpace(jRequest)
+				.contains(" Canwereplaceallthiswhitespaceswithoutusingreplaceplease"));
+
+	}
+
+	private JRequest getJRequest() {
 		JRequest jRequest = new JRequest();
 		jRequest.set_id(testUtils.assignJReqID());
 		jRequest.setFindDuplicates("HereWeHaveSomeDuplicatedCharacters");
@@ -45,9 +49,7 @@ public class UtilsTest extends AbstractTest{
 		jRequest.setValidateMeOnlyIActuallyShouldBeABoolean(false);
 		jRequest.setWhiteSpacesGalore("Can we replace all this white spaces without using replace please");
 		jRequest.setNumbersMeetNumbers(new int[] { 35, 2, 100, 15, 75, 25, 99 });
-		
-		assertTrue(testUtils.removeWhtSpace(jRequest).contains("Canwereplaceallthiswhitespaceswithoutusingreplaceplease"));
-		assertFalse("Incorrect String",testUtils.removeWhtSpace(jRequest).contains(" Canwereplaceallthiswhitespaceswithoutusingreplaceplease"));
-		
+
+		return jRequest;
 	}
 }

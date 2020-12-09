@@ -2,7 +2,6 @@ package com.telstra.bootapi;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
-import static org.junit.Assert.assertTrue;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -42,15 +41,12 @@ public class BootapiControllerTest extends AbstractTest {
 				MockMvcRequestBuilders.post(uri).contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson))
 				.andExpect(status().isOk()).andExpect(content().contentType("application/json"))
 				.andExpect(jsonPath("$.findDuplicates").value("HereWeHaveSomeDuplicatedCharacters"))
-				.andExpect(jsonPath("$.whiteSpacesGalore").value("Can we replace all this white spaces without using replace please"))
+				.andExpect(jsonPath("$.whiteSpacesGalore")
+						.value("Can we replace all this white spaces without using replace please"))
 				.andExpect(jsonPath("$.validateMeOnlyIActuallyShouldBeABoolean").value("false"))
 				.andExpect(jsonPath("$.numbersMeetNumbers").isArray())
 				.andExpect(jsonPath("$.numbersMeetNumbers", hasSize(7)))
 				.andExpect(jsonPath("$.numbersMeetNumbers", containsInAnyOrder(35, 2, 100, 15, 75, 25, 99)));
 	}
-	
-	
-
-	
 
 }

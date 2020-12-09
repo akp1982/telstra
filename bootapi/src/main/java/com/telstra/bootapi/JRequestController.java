@@ -24,18 +24,6 @@ public class JRequestController {
 		System.out.println("*** createJReq START ***");
 		System.out.println("");
 		processService.processJReqSave(jReq);
-		// pets.set_id(ObjectId.get());
-		// repository.save(pets);
-		/*
-		 * boolean validOperation = false; int retry=0; do { try {
-		 * processService.processJReqSave(jReq); jreq.set_id(assignJReqID());
-		 * jrep.save(jreq); validOperation=true; } catch (DuplicateKeyException de) {
-		 * retry++; System.out.println("Incorrect Id");
-		 * System.out.println("Try-"+retry); }
-		 * 
-		 * } while (!validOperation);
-		 */
-
 		System.out.println("*** createJReq END ***");
 		return jReq;
 	}
